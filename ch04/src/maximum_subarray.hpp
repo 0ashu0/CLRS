@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+#include <tuple>
 
 namespace clrs
 {
@@ -29,6 +30,13 @@ namespace clrs
 			for (int i = 0; i != changes.size(); ++i)
 				changes[i] = prices[i + 1] - prices[i];
 			return changes;
+		}
+
+		template<typename Container>
+		std::tuple<typename Container::size_type, typename Container::size_type, typename Container::value_type>
+			find_max_crossing_subarray(Container const& arr, Container::size_type low, Container::size_type mid, Container::size_type hgh)
+		{
+
 		}
 	}
 }
