@@ -16,7 +16,7 @@ namespace clrs
 			if (prices.size() > 1)
 				for (auto b = Size(0); b != prices.size(); ++b)
 					for (auto s = Size(b + 1); s != prices.size(); ++s)
-						if (prices[s] - prices[b]) > prices[max.second] - prices[max.first])
+						if (prices[s] - prices[b] > prices[max.second] - prices[max.first])
 							max = Pair{ b, s };
 			return max;
 		}
