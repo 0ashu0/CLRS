@@ -4,10 +4,10 @@
  all elements are negative
  -> line 7 and 14 of FIND-MAX-CROSSING-SUBARRAY will be executed one and only one time
  -> FIND-MAX-CROSSING-SUBARRAY will return (max-left = mid, max-right = mid + 1, left-sum + right-sum = A[mid] + A[mid + 1])
- -> A[mid] + A[mid + 1]) must be less than the single element returned by the same level FIND-MAXIMUM-SUBARRAY
- -> finally, an single element with greatest negative value will be returned.
+ -> A[mid] + A[mid + 1] must be less than the single element returned by the same level FIND-MAXIMUM-SUBARRAY
+ -> finally, an single element with greatest negative value returned.
 
- E.G. the following recursion tree returns -1
+ //The following recursion tree returns -1
  find[-1,-2,-3,-4,-5,-6,-7,-8] -> -1
  |-find[-1,-2,-3,-4] -> -1
  | |-find[-1,-2] -> -1
