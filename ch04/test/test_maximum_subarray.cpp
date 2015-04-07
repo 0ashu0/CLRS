@@ -13,7 +13,7 @@ namespace test
 		
 		TEST_METHOD(find_max_profit_brutally_case1)
 		{
-			auto prices = std::vector<int>{ 1, -2, 3 };
+			auto prices = std::vector < int > { 1, -2, 3 };
 			auto actual = clrs::ch04::find_max_profit_brutally(prices);
 			Assert::AreEqual(1u, actual.first);
 			Assert::AreEqual(2u, actual.second);
