@@ -20,5 +20,15 @@ namespace clrs
 							max = Pair{ b, s };
 			return max;
 		}
+
+		//len(prices) must be greater than 1, value_type must be signed
+		template<typename Container>
+		Container convert_to_changes(Container const& prices)
+		{
+			auto changes = Container(prices.size() - 1);
+			for (int i = 0; i != changes.size(); ++i)
+				changes[i] = prices[i + 1] - prices[i];
+			return changes;
+		}
 	}
 }
