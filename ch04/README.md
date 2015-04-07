@@ -7,8 +7,7 @@
  -> A[mid] + A[mid + 1]) must be less than the single element returned by the same level FIND-MAXIMUM-SUBARRAY
  -> finally, a element with greatest negative value will be returned.
 
-
- //For example the recursion tree returns -1
+ //The following recursion tree returns -1
  find[-1,-2,-3,-4,-5,-6,-7,-8] -> -1
  |-find[-1,-2,-3,-4] -> -1
  | |-find[-1,-2] -> -1
