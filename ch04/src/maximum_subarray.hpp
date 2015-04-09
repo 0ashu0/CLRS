@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
 #include <tuple>
+#include <algorithm>
 
 namespace clrs
 {
@@ -66,6 +67,25 @@ Lft_done:
 Rht_done:
 
 			return std::make_tuple(max_lft, max_rht, lft_sum + rht_sum);
+		}
+
+		template<typename C>
+		auto find_max_subarray(C const& arr, typename C::size_type low, typename C::size_type hgh)
+			-> std::tuple < typename C::size_type, typename C::size_type, typename C::value_type >
+		{
+			if (hgh == low)
+				return std::make_tuple(low, hgh, arr[low]);
+			
+			auto lft = find_max_subarray(arr, low, mid);
+			auto rht = find_max_subarray(arr, mid + 1, hgh);
+			auto mid = (low + hgh) / 2;
+			auto crs = find_max_crossing_subarray(arr, low, mid, hgh);
+			auto rht_max = std::get<2>(rht);
+			auto lft_max = std::get<2>(lft);
+			auto crs_max = std::get<2>(crs);
+			auto max = std::max({ lft_max, rht_max, crs_max });
+			
+			return max == crs_max ? crs : max == lft_max ? lft_max : rht_max;
 		}
 	}
 }
