@@ -52,6 +52,7 @@ Find-Max-Profit-Brutally(prices)
 ##Ex4.1-4
  * Add the following line into FIND-MAXIMUM-SUBARRAY between line 6 and line 7:
 ```cpp
+//-1 indicate this is an empty subarray
 if 0 >= max(left_sum, right_sum, cross_sum)
  return (-1,1,0)
 ```
