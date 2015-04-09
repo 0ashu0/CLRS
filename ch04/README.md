@@ -45,3 +45,6 @@ Find-Max-Profit-Brutally(prices)
           max = tuple(b, s)
   return max
 ```
+
+##Ex4.1-3 [Implementation](src/maximum_subarray.hpp) | [Test](test/test_maximum_subarray.cpp)
+ * On my desktop, Windows 8 + Visual Studio 2013, the crossover point occurs at n0 = 100. At this point, both alorithm used around 1 ms to run.
