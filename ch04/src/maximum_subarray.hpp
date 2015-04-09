@@ -22,7 +22,7 @@ namespace clrs
 			return max;
 		}
 
-		//len(prices) must be greater than 1, value_type must be signed
+		//prices.size must be greater than 1, value_type must be signed
 		template<typename Container>
 		Container convert_to_changes(Container const& prices)
 		{
@@ -32,11 +32,40 @@ namespace clrs
 			return changes;
 		}
 
-		template<typename Container>
-		std::tuple<typename Container::size_type, typename Container::size_type, typename Container::value_type>
-			find_max_crossing_subarray(Container const& arr, Container::size_type low, Container::size_type mid, Container::size_type hgh)
+		template<typename C>
+		std::tuple<typename C::size_type, typename C::size_type, typename C::value_type>
+			find_max_crossing_subarray(C const& arr, typename C::size_type low, typename C::size_type mid, typename C::size_type hgh)
 		{
+			auto accumulation = typename C::value_type{};
 
+			auto lft_sum = accumulation = arr[mid];
+			auto max_lft = mid;
+			if (low == mid) goto Lft_done;
+			for (auto i = mid - 1; i != low - 1; --i)
+			{
+				if ((accumulation += arr[i]) > lft_sum)
+				{
+					lft_sum = accumulation;
+					max_lft = i;
+				}
+			}
+Lft_done:
+
+			auto rht_sum = accumulation = arr[mid + 1];
+			auto max_rht = mid + 1;
+			if (low == mid) goto Rht_done;
+			for (auto i = mid + 2; i != hgh + 1; ++i)
+			{
+				if ((accumulation += arr[i]) > rht_sum)
+				{
+					rht_sum = accumulation;
+					max_rht = i;
+				}
+			}
+			
+Rht_done:
+
+			return std::make_tuple(max_lft, max_rht, lft_sum + rht_sum);
 		}
 	}
 }
