@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../src/maximum_subarray.hpp"
 #include <vector>
+#include <random>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -98,6 +99,35 @@ namespace test
 			Assert::AreEqual(7u, head);
 			Assert::AreEqual(10u, tail);
 			Assert::AreEqual(43, summ);
+		}
+
+		//what follows is codes for ex 4.1-3
+		template<typename Integer>
+		auto make_random_data(Integer min, Integer max, std::size_t size) -> std::vector < Integer >
+		{
+			auto generate = [=] 
+			{
+				auto static engine = std::default_random_engine{};
+				auto static distribution = std::uniform_int_distribution<Integer>(min, max);
+				return distribution(engine);
+			};
+
+			auto data = std::vector<Integer>(size);
+			for (auto& elem : data) elem = generate();
+
+			return data;
+		}
+
+		TEST_METHOD(brute_force) //405ms
+		{
+			auto data = make_random_data(-20, 20, 2000);
+			clrs::ch04::find_max_profit_brutally(data);
+		}
+
+		TEST_METHOD(divide_conquer) //5ms
+		{
+			auto data = make_random_data(-20, 20, 2000);
+			clrs::ch04::find_max_subarray(data, 0u, data.size() - 1);
 		}
 	};
 }
