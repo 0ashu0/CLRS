@@ -48,3 +48,10 @@ Find-Max-Profit-Brutally(prices)
 
 ##Ex4.1-3 [Implementation](src/maximum_subarray.hpp) | [Test](test/test_maximum_subarray.cpp)
  * On my desktop, Windows 8 + Visual Studio 2013, the crossover point occurs at n0 = 100. At this point, both alorithm used around 1 ms to run. I didn't carry out furture experiment,as it is quite time consuming. Just guess that using Brute-Force as base case for recursion would not change the crossover point.
+
+##Ex4.1-4
+ * Add the following line into FIND-MAXIMUM-SUBARRAY between line 6 and line 7:
+```cpp
+if 0 >= max(left_sum, right_sum, cross_sum)
+ return (-1,1,0)
+```
