@@ -60,5 +60,44 @@ namespace test
 			Assert::AreEqual(6u, tail);
 			Assert::AreEqual(25, summ);
 		}
+
+		TEST_METHOD(find_max_subarray_case1)
+		{
+			auto changes = std::vector < int > {-1, -2, 3, 4, 5, 6, 7, -8};
+			auto head = std::vector<int>::size_type{};
+			auto tail = std::vector<int>::size_type{};
+			auto summ = std::vector<int>::value_type{};
+			std::tie(head, tail, summ) = clrs::ch04::find_max_subarray(changes, 0u, 7u);
+
+			Assert::AreEqual(2u, head);
+			Assert::AreEqual(6u, tail);
+			Assert::AreEqual(25, summ);
+		}
+
+		TEST_METHOD(find_max_subarray_case2)
+		{
+			auto changes = std::vector < int > {42};
+			auto head = std::vector<int>::size_type{};
+			auto tail = std::vector<int>::size_type{};
+			auto summ = std::vector<int>::value_type{};
+			std::tie(head, tail, summ) = clrs::ch04::find_max_subarray(changes, 0u, 0u);
+
+			Assert::AreEqual(0u, head);
+			Assert::AreEqual(0u, tail);
+			Assert::AreEqual(42, summ);
+		}
+
+		TEST_METHOD(find_max_subarray_case3)
+		{
+			auto changes = std::vector < int > {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+			auto head = std::vector<int>::size_type{};
+			auto tail = std::vector<int>::size_type{};
+			auto summ = std::vector<int>::value_type{};
+			std::tie(head, tail, summ) = clrs::ch04::find_max_subarray(changes, 0u, changes.size() - 1);
+
+			Assert::AreEqual(7u, head);
+			Assert::AreEqual(10u, tail);
+			Assert::AreEqual(43, summ);
+		}
 	};
 }
