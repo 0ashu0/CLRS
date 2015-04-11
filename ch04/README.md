@@ -57,4 +57,13 @@ if 0 >= max(left_sum, right_sum, cross_sum)
  return (-1,1,0)
 ```
 ##Ex4.1-5
- * The idea given is acatully is [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
+ * The idea given is actually is [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
+ * Pseudocode 
+```python
+def max_subarray(A):
+    max_ending_here = max_so_far = A[0]
+    for x in A[1:]:
+        max_ending_here = max(x, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
+```
