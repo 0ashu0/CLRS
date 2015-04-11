@@ -64,6 +64,9 @@ if 0 >= max(left_sum, right_sum, cross_sum)
  Guess : 
   for a constant c, T(n) <= c(n - 1)^2 + n
  Pick c = 1
-  (n - 1)^2 + n = n^2 - n + 1 <= , for n >= 1 
+  (n - 1)^2 + n = n^2 - n + 1 <= n^2, for n >= 1 
 
+```
+## Ex4.3-2
+```cpp
 ```
