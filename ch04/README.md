@@ -56,3 +56,5 @@ Find-Max-Profit-Brutally(prices)
 if 0 >= max(left_sum, right_sum, cross_sum)
  return (-1,1,0)
 ```
+##Ex4.1-5
+ * The idea given is acatully is [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
