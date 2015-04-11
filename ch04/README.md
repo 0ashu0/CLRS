@@ -68,5 +68,13 @@ if 0 >= max(left_sum, right_sum, cross_sum)
 
 ```
 ## Ex4.3-2
+ * This exercise is checking how to overcome subtleties caused by the trailing term. As shown in section 4.1, it can be overcomed by subtracting a lower-order term from our previous guess.
 ```cpp
+ Guess :
+  for a constant c, T(n) <= clg(n - 2)
+   substituting T(ceil(n/2)) with clg(ceil(n/2) - 2) into recurrence, yield:
+    T(n) <= clg(ceil(n/2) - 2) + 1
+   to eliminate ceiling:
+         <= clg(n/2 + 1 - 2) + 1 = clg(n/2 - 1) + 1 <= clg(n/2) + 1 = clg(n) - clg(2) + 1 = clg(n) - c + 1
+ Hence for any c >= 0, this solution holds.
 ```
