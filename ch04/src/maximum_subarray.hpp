@@ -7,6 +7,7 @@ namespace clrs
 {
 	namespace ch04
 	{
+		//O(n^2)
 		template<typename Container>
 		std::pair<typename Container::size_type, typename Container::size_type>
 			find_max_profit_brutally(Container const& prices)
@@ -34,8 +35,10 @@ namespace clrs
 		}
 
 		template<typename C>
-		std::tuple<typename C::size_type, typename C::size_type, typename C::value_type>
-			find_max_crossing_subarray(C const& arr, typename C::size_type low, typename C::size_type mid, typename C::size_type hgh)
+		using Triple = std::tuple < typename C::size_type, typename C::size_type, typename C::value_type >;
+
+		template<typename C>
+		auto find_max_crossing_subarray(C const& arr, typename C::size_type low, typename C::size_type mid, typename C::size_type hgh) -> Triple<C>
 		{
 			auto accumulation = typename C::value_type{};
 
@@ -69,9 +72,9 @@ Rht_done:
 			return std::make_tuple(max_lft, max_rht, lft_sum + rht_sum);
 		}
 
+		//O(n lg n)
 		template<typename C>
-		auto find_max_subarray(C const& arr, typename C::size_type low, typename C::size_type hgh)
-			-> std::tuple < typename C::size_type, typename C::size_type, typename C::value_type >
+		auto find_max_subarray(C const& arr, typename C::size_type low, typename C::size_type hgh) -> Triple<C>
 		{
 			if (low == hgh)
 				return std::make_tuple(low, hgh, arr[low]);
@@ -86,6 +89,29 @@ Rht_done:
 			auto max = std::max({ lft_max, rht_max, crs_max });
 			
 			return max == crs_max ? crs : max == lft_max ? lft : rht;
+		}
+
+		//
+		//	Ex 4.1-5
+		//	Implementaion for Kadane's algorithm 
+		//	O(n)
+		//
+		template<typename C>
+		auto kadane(C const& arr) -> Triple<C>
+		{
+			auto max_ending_here = std::make_tuple(0, 0, arr[0]);
+			auto max_so_far = max_ending_here;
+			for (auto i = typename C::size_type(1); i != arr.size(); ++i)
+			{
+				if (arr[i] > std::get<2>(max_ending_here) + arr[i])
+					max_ending_here = std::make_tuple(i, i, arr[i]);
+				else
+					max_ending_here = std::make_tuple(std::get<0>(max_ending_here), i, arr[i] + std::get<2>(max_ending_here));
+
+				max_so_far = std::get<2>(max_ending_here) > std::get<2>(max_so_far) ? max_ending_here : max_so_far;
+			}
+
+			return max_so_far;
 		}
 	}
 }

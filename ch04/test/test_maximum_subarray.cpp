@@ -101,7 +101,9 @@ namespace test
 			Assert::AreEqual(43, summ);
 		}
 
-		//what follows is codes for ex 4.1-3
+		//
+		//Ex 4.1-3
+		//
 		template<typename Integer>
 		auto make_random_data(Integer min, Integer max, std::size_t size) -> std::vector < Integer >
 		{
@@ -118,16 +120,46 @@ namespace test
 			return data;
 		}
 
-		TEST_METHOD(brute_force) //405ms
+		TEST_METHOD(brute_force) //1ms
 		{
-			auto data = make_random_data(-20, 20, 2000);
+			auto data = make_random_data(-20, 20, 100);
 			clrs::ch04::find_max_profit_brutally(data);
 		}
 
-		TEST_METHOD(divide_conquer) //5ms
+		TEST_METHOD(divide_conquer) //<1ms
 		{
-			auto data = make_random_data(-20, 20, 2000);
+			auto data = make_random_data(-20, 20, 100);
 			clrs::ch04::find_max_subarray(data, 0u, data.size() - 1);
+		}
+
+		//
+		//	Ex 4.1-5
+		//	Test for Kadane's algorithm	
+		//
+		TEST_METHOD(kadane_case1)
+		{
+			auto changes = std::vector < int > {-1, 2, 3, -8};
+			auto head = std::vector<int>::size_type{};
+			auto tail = std::vector<int>::size_type{};
+			auto summ = std::vector<int>::value_type{};
+			std::tie(head, tail, summ) = clrs::ch04::kadane(changes);
+
+			Assert::AreEqual(1u, head);
+			Assert::AreEqual(2u, tail);
+			Assert::AreEqual(5, summ);
+		}
+
+		TEST_METHOD(kadane_case2)
+		{
+			auto changes = std::vector < int > {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+			auto head = std::vector<int>::size_type{};
+			auto tail = std::vector<int>::size_type{};
+			auto summ = std::vector<int>::value_type{};
+			std::tie(head, tail, summ) = clrs::ch04::kadane(changes);
+
+			Assert::AreEqual(7u, head);
+			Assert::AreEqual(10u, tail);
+			Assert::AreEqual(43, summ);
 		}
 	};
 }
