@@ -46,7 +46,7 @@ Find-Max-Profit-Brutally(prices)
   return max
 ```
 
-##Ex4.1-3 [Implementation](src/maximum_subarray.hpp) | [Test](test/test_maximum_subarray.cpp)
+##Ex4.1-3 [Implementation](src/maximum_subarray.hpp#L10-L92) | [Test](src/maximum_subarray.hpp#L10-L92)
  * On my desktop, Windows 8 + Visual Studio 2013, the crossover point occurs at n0 = 100. At this point, both alorithm used around 1 ms to run. I didn't carry out furture experiment,as it is quite time consuming. Just guess that using Brute-Force as base case for recursion would not change the crossover point.
 
 ##Ex4.1-4
@@ -56,5 +56,5 @@ Find-Max-Profit-Brutally(prices)
 if 0 >= max(left_sum, right_sum, cross_sum)
  return (-1,1,0)
 ```
-##Ex4.1-5 [Implementation](https://github.com/Mooophy/CLRS/blob/v2/ch04/src/maximum_subarray.hpp) | [Test](test/test_maximum_subarray.cpp)
+##Ex4.1-5 [Implementation](src/maximum_subarray.hpp#L94-L115) | [Test](test/test_maximum_subarray.cpp#L135-L163)
  * The idea given is actually [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
