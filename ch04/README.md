@@ -58,3 +58,12 @@ if 0 >= max(left_sum, right_sum, cross_sum)
 ```
 ##Ex4.1-5 [Implementation](src/maximum_subarray.hpp#L94-L115) | [Test](test/test_maximum_subarray.cpp#L135-L163)
  * The idea given is actually [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
+
+## Ex4.3-1
+```cpp
+ Guess : 
+  for a constant c, T(n) <= c(n - 1)^2 + n
+ Pick c = 1
+  (n - 1)^2 + n = n^2 - n + 1 <= , for n >= 1 
+
+```
