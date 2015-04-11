@@ -68,7 +68,7 @@ if 0 >= max(left_sum, right_sum, cross_sum)
 
 ```
 ## Ex4.3-2
- * This exercise is checking how to overcome subtleties caused by the trailing term. As shown in section 4.1, it can be overcomed by subtracting a lower-order term from our previous guess.
+ * This exercise is checking how to overcome subtleties caused by the trailing term. As shown in section 4.1, it can be overcomed by subtracting a lower-order term.
 ```cpp
  Guess :
   for a constant c, T(n) <= clg(n - 2)
