@@ -74,7 +74,6 @@ if 0 >= max(left_sum, right_sum, cross_sum)
   for a constant c, T(n) <= clg(n - 2)
  Substituting T(ceil(n/2)) with clg(ceil(n/2) - 2) into recurrence, yield:
   T(n) <= clg(ceil(n/2) - 2) + 1
- To eliminate ceiling:
        <= clg(n/2 + 1 - 2) + 1 = clg(n/2 - 1) + 1 = clg((n-2)/2) + 1 = clg(n-2) - c + 1
  Hence for c >= 1, this solution holds.
 ```
