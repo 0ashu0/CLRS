@@ -45,3 +45,25 @@ Find-Max-Profit-Brutally(prices)
           max = tuple(b, s)
   return max
 ```
+
+##Ex4.1-3 [Implementation](src/maximum_subarray.hpp) | [Test](test/test_maximum_subarray.cpp)
+ * On my desktop, Windows 8 + Visual Studio 2013, the crossover point occurs at n0 = 100. At this point, both alorithm used around 1 ms to run. I didn't carry out furture experiment,as it is quite time consuming. Just guess that using Brute-Force as base case for recursion would not change the crossover point.
+
+##Ex4.1-4
+ * Add the following line into FIND-MAXIMUM-SUBARRAY between line 6 and line 7:
+```cpp
+//-1 indicate this is an empty subarray
+if 0 >= max(left_sum, right_sum, cross_sum)
+ return (-1,1,0)
+```
+##Ex4.1-5
+ * The idea given is actually is [Kadane's algorithm](http://en.wikipedia.org/wiki/Maximum_subarray_problem) an example of Dynamic Programming. 
+ * Pseudocode 
+```python
+def max_subarray(A):
+    max_ending_here = max_so_far = A[0]
+    for x in A[1:]:
+        max_ending_here = max(x, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
+```
